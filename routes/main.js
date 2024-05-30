@@ -25,10 +25,10 @@ router.get('/form', function(req, res, next) {
 });
 
 router.post('/registerdata', function(req, res) {
-    data = req.body.aadharno;
+    data = req.body.smartvoteno;
     account_address = req.body.account_address;
 
-    let sql = "SELECT * FROM aadhar_info WHERE aadharno = ?";
+    let sql = "SELECT * FROM smartvote_info WHERE smartvoteno = ?";
     conn.query(sql, [data], (error, results) => {
         if (error) {
             console.error('Error executing query:', error.message);
@@ -70,7 +70,7 @@ router.post('/registerdata', function(req, res) {
                 res.render('voter-registration.ejs', { alertMsg: "You are already registered. You cannot register again" });
             }
         } else {
-            res.send('Aadhar number not found.');
+            res.send('smartvote number not found.');
         }
     });
 });
@@ -85,7 +85,7 @@ router.post('/otpverify', (req, res) => {
                 console.error('Error inserting record:', err.message);
                 return res.status(500).send('Internal Server Error');
             } else {
-                var sql1 = "UPDATE aadhar_info SET is_registered = ? WHERE aadharno = ?";
+                var sql1 = "UPDATE smartvote_info SET is_registered = ? WHERE smartvoteno = ?";
                 var record1 = ['YES', data];
                 conn.query(sql1, record1, function(err1, res1) {
                     if (err1) {
