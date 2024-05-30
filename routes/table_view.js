@@ -6,7 +6,7 @@ var db=require('../database');
 // this script to fetch data from MySQL databse table
 router.get('/table_view', function(req, res, next) {
     var sql='SELECT * FROM registered_users';
-    db.query(sql, (err, data, fields) =>{
+    db.query(sql, (err, data, fields) => {
     if (err) 
     {
         console.log(err)

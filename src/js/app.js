@@ -43,15 +43,15 @@ App = {
             App.contracts.Contest.setProvider(App.web3Provider);
   
             // Check if contract is deployed on the current network
-            const networkId = await web3.eth.net.getId();
-            const deployedNetwork = contest.networks[networkId];
+          //  const networkId = await web3.eth.net.getId();
+            const deployedNetwork = contest.networks[5777];
   
-            if (deployedNetwork) {
+            /*if (deployedNetwork) {
                 App.contracts.Contest.options.address = deployedNetwork.address;
             } else {
                 console.error("Contract not found on this network.");
                 return;
-            }
+            }*/
         } catch (error) {
             console.error("Error loading contract JSON:", error);
         }
@@ -60,8 +60,7 @@ App = {
     render: async function() {
         try {
             const contestInstance = await App.contracts.Contest.deployed();
-            const accounts = await web3.eth.getAccounts();
-            App.account = accounts[0];
+            App.account = web3.eth.accounts[0]
             $("#accountAddress").html("Your account: " + App.account);
   
             const contestantsCount = await contestInstance.contestantsCount();
@@ -156,7 +155,8 @@ App = {
     registerVoter: async function() {
         try {
             const add = $('#accadd').val();
-            const contestInstance = await App.contracts.Contest.deployed();
+            debugger
+            const contestInstance = App.contracts.Contest.deployed();
             await contestInstance.voterRegisteration(add);
             $("#content").hide();
             $("#loader").show();

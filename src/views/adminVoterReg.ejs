@@ -90,23 +90,24 @@
                         <div>
                             <table class="table">
                                 <tr>
-                                    <th>S.N</th>
+                                    <th>ID Number</th>
                                     <th>Account address</th>
                                     <th>Is registered</th>
-                
+
                 
                                 </tr>
                 
-                                <% if(userData.length!=0){ var i=0; userData.forEach(function(data){ console.log(data) %>
+                                <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ console.log(data) %>
                                     <tr>
+
                                         <td>
-                                            <%=i; %>
+                                            <%=data.smartvoteno%>
                                         </td>
                                         <td>
-                                            <%=data.Account_address%>
+                                            <%=data.account_address%>
                                         </td>
                                         <td>
-                                            <%=data.Is_registered%>
+                                            <%=data.is_registered == 1? 'true': 'false'%>
                                         </td>
                 
                 
