@@ -33,7 +33,7 @@ body {
 }
 
 .company-logo {
-    max-width: 50px;
+    max-width: 100px;
     height: auto;
     margin-right: 10px;
 }
@@ -58,11 +58,14 @@ body {
 .image-container img {
     max-width: 100%;
     height: auto;
+    border-radius: 20px;
+
 }
 
 .content h1 {
     font-size: 2.5em;
     margin: 10px 0;
+    
 }
 
 .content p {
@@ -73,6 +76,7 @@ body {
 .content a {
     text-decoration: none;
     margin: 10px;
+    
 }
 
 .content button {

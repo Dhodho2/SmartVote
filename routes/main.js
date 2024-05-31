@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'smartvote9@gmail.com',
-        pass: 'bjcvzwcrxucscqys'
+        pass: 'ysdmnrybhhswbhca'
     }
 });
 
@@ -25,6 +25,7 @@ router.get('/form', function(req, res, next) {
 });
 
 router.post('/registerdata', function(req, res) {
+    debugger
     data = req.body.smartvoteno;
     account_address = req.body.account_address;
 
