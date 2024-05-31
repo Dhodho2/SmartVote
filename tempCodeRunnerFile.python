@@ -1,0 +1,11 @@
+import hashlib
+
+def sha256_hash(text):
+    sha256 = hashlib.sha256()
+    sha256.update(text.encode('utf-8'))
+    return sha256.hexdigest()
+
+input_string = input("Enter a string to hash: ")
+hash_result = sha256_hash(input_string)
+print(f"SHA-256 hash of '{input_string}': {hash_result}")
+

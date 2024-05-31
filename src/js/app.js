@@ -64,11 +64,14 @@ App = {
             $("#accountAddress").html("Your account: " + App.account);
   
             const contestantsCount = await contestInstance.contestantsCount();
-            const contestantsResults = $("#test");
+            const contestantsResults = $("#contestantsResultsAdmin");
             contestantsResults.empty();
-            const contestantSelect = $("#contestantSelect");
-            contestantSelect.empty();
-  
+
+            const contestantSelectUser = $("#contestantSelect");
+            contestantSelectUser.empty();
+
+            const contestantsResultsUser = $("#test");
+
             for (let i = 1; i <= contestantsCount; i++) {
                 const contestant = await contestInstance.contestants(i);
                 if (contestant && contestant.length) {
@@ -77,8 +80,10 @@ App = {
                     const fetchedParty = contestant[3];
                     const fetchedAge = contestant[4];
                     const fetchedQualification = contestant[5];
-  
-                    const contestantTemplate = `
+debugger
+                    const votes = 0; //@todo - sum up vote
+
+                    const contestantTemplateUser = `
                         <div class='card' style='width: 15rem; margin: 1rem;'>
                             <div class='card-body text-center'>
                                 <h4 class='card-title'>${name}</h4>
@@ -100,10 +105,20 @@ App = {
                                 </div>
                             </div>
                         </div>`;
+                    contestantsResultsUser.append(contestantTemplateUser)
+                    const contestantOptionUser = `<option value='${id}'>${name}</option>`;
+                    contestantSelectUser.append(contestantOptionUser);
+
+                    const contestantTemplate = `<tr>
+                            <td>${id}</td>
+                            <td>${name}</td>
+                            <td>${fetchedParty}</td>
+                            <td>${fetchedAge}</td>
+                            <td>${fetchedQualification}</td>
+                            <td>${votes}</td>
+                    </tr> `;
                     contestantsResults.append(contestantTemplate);
-  
-                    const contestantOption = `<option value='${id}'>${name}</option>`;
-                    contestantSelect.append(contestantOption);
+
                 }
             }
         } catch (error) {
@@ -114,7 +129,7 @@ App = {
     castVote: async function(id) {
         try {
             const contestInstance = await App.contracts.Contest.deployed();
-            await contestInstance.vote(id, { from: App.account });
+            await contestInstance.vote(id, { from:  web3.eth.accounts[0] });
             console.log("Vote casted");
         } catch (error) {
             console.error("Error casting vote:", error);
@@ -123,28 +138,30 @@ App = {
   
     addCandidate: async function() {
         try {
+
             const name = $('#name').val();
             const age = $('#age').val();
             const party = $('#party').val();
             const qualification = $('#qualification').val();
-  
+
             const contestInstance = await App.contracts.Contest.deployed();
-            await contestInstance.addContestant(name, party, age, qualification);
+            await contestInstance.addContestant(name, party, age, qualification, { from:  web3.eth.accounts[0] });
             $('#name').val('');
             $('#age').val('');
             $('#party').val('');
             $('#qualification').val('');
+
         } catch (error) {
             console.error("Error adding candidate:", error);
         }
     },
-  
+
     changeState: async function() {
         try {
             const contestInstance = await App.contracts.Contest.deployed();
             const currentState = await contestInstance.state();
             const newState = currentState.toNumber() + 1;
-            await contestInstance.changeState(newState);
+            await contestInstance.changeState(newState,{ from:  web3.eth.accounts[0] });
             $("#content").hide();
             $("#loader").show();
         } catch (error) {
@@ -156,8 +173,9 @@ App = {
         try {
             const add = $('#accadd').val();
             debugger
-            const contestInstance = App.contracts.Contest.deployed();
-            await contestInstance.voterRegisteration(add);
+            const contestInstance = await App.contracts.Contest.deployed();
+            debugger
+            await contestInstance.voterRegisteration(add,{ from:  web3.eth.accounts[0] });
             $("#content").hide();
             $("#loader").show();
         } catch (error) {
