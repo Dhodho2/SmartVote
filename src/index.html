@@ -3,32 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SmatVote - Make your choice and be heard. Sign up or log in to participate in the voting process.">
-   <title>Block-Vote</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>Home Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .background-image {
+            height: 100%;
+            width: 100%;
+            background-image: url('https://images.pexels.com/photos/1000445/pexels-photo-1000445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .centered-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .centered-content h1 {
+            margin: 0 0 20px;
+            font-size: 2.5rem;
+        }
+
+        .centered-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .centered-content button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .centered-content button:hover {
+            background-color: #0056b3;
+        }
+
+        .features, .testimonials, .faq, .footer {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .features h2, .testimonials h2, .faq h2, .footer h2 {
+            margin: 20px 0;
+            font-size: 2rem;
+        }
+
+        .features p, .testimonials p, .faq p, .footer p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .features .feature-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .features .feature-item {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+        }
+
+        .testimonials .testimonial {
+            margin-bottom: 30px;
+        }
+
+        .testimonials .testimonial p {
+            font-style: italic;
+        }
+
+        .faq .question {
+            margin-bottom: 20px;
+        }
+
+        .faq .question h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .faq .question p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="nav-container">
-            <div class="logo">
-                <img src="img/Company_Logo.jfif" alt="Company Logo" class="company-logo">
-                <h1>SmartVote</h1>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <section class="hero-section">
-            <div class="image-container">
-                <img src="img/home_page.png" alt="Voting illustration">
-            </div>
-            <div class="content">
-                <h1>You Decide!</h1>
-                <p>Make your choice!</p>
-                <a href='/register'><button>User Sign-Up/Login</button></a>
-                <a href='/adlogin'><button>Admin Login</button></a>
-            </div>
-        </section>
-    </main>
+<div class="background-image">
+    <div class="overlay"></div>
+    <div class="centered-content">
+        <div class="logo">
+            <img style="height: 200px; width: auto" src="img/Company_Logo-removebg-preview.png" alt="Company Logo" class="company-logo">
+        </div>
+        <h1>You Decide! 🫵🫵🫵</h1>
+        <a style="margin-right: 30px" href='/register'><button>User Sign-Up/Login</button></a>
+        <a href='/adlogin'><button>Admin Login</button></a>
+        <p style="margin-top: 20px; font-size: 14px">Empower your voice with a secure, transparent, <br> and decentralized voting platform powered by Ethereum.</p>
+
+    </div>
+</div>
+
+<div class="features">
+    <h2>Features</h2>
+    <div class="feature-list">
+        <div class="feature-item">
+            <h3>Secure Voting</h3>
+            <p>Ensure your vote is counted with blockchain technology.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Transparency</h3>
+            <p>All votes are publicly verifiable and immutable.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Easy to Use</h3>
+            <p>User-friendly interface for seamless voting experience.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Decentralized</h3>
+            <p>No central authority; votes are managed on the Ethereum blockchain.</p>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- The above 3 meta tags must come first in the head; any other head content must come after these tags -->
-    <title>Best Actor Contest</title>
+    <title>Admin Voter Registeration</title>
 
 
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
@@ -90,7 +90,7 @@
                         <div>
                             <table class="table">
                                 <tr>
-                                    <th>ID Number</th>
+                                    <th>S/N</th>
                                     <th>Account address</th>
                                     <th>Is registered</th>
 
@@ -101,13 +101,13 @@
                                     <tr>
 
                                         <td>
-                                            <%=data.smartvoteno%>
+                                            <%=i%>
                                         </td>
                                         <td>
                                             <%=data.account_address%>
                                         </td>
                                         <td>
-                                            <%=data.is_registered == 1? 'true': 'false'%>
+                                            <%=data.is_registered == 1? 'YES': 'NO'%>
                                         </td>
                 
                 

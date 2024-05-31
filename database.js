@@ -1,8 +1,8 @@
 var mysql = require('mysql');
 var conn = mysql.createConnection({
   host: 'localhost', // assign your host name
-  user: 'smartvoteuser',      //  assign your database username
-  password: 'password',      // assign your database password
+  user: 'root',      //  assign your database username
+  password: 'zxcvbnm',      // assign your database password
   database: 'smartvote_db' // assign database Name
 }); 
 conn.connect(function(err) {
